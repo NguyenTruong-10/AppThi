@@ -1,0 +1,31 @@
+5
+Ket qua cua 2+1=?
+A:3
+B:4
+C:5
+D:7
+C
+Ket qua cua 7+1=?
+A:3
+B:8
+C:9
+D:10
+B
+Ket qua cua 2+3=?
+A:3
+B:4
+C:6
+D:5
+D
+Ket qua cua 2+9=?
+A:10
+B:11
+C:90
+D: -9
+B
+ket qua cua 9+9=?
+A;1
+B:11
+C:18
+D:10
+C
