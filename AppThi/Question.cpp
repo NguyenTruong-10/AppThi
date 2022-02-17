@@ -4,13 +4,15 @@
 #include "Question.h"
 
 using namespace std;
-
+int Questions::lastId = 0;
 Questions::Question()
 {
 }
 Questions::Question(int Id, string thread, string answer_A, string answer_B, string answer_C, string answer_D, string choice_answer, string right_answer)
 {
-    this->Id = Id;
+    // this->Id = Id;
+    Id = lastId ;
+    lastId ++; 
     this->thread = thread;
     this->answer_A = answer_A;
     this->answer_B = answer_B;
@@ -22,11 +24,11 @@ Questions::Question(int Id, string thread, string answer_A, string answer_B, str
 
 void Questions::setID(int ID)
 {
-    this->Id = Id;
+    this->Id = lastId;
 }
 int Questions::getID()
 {
-    return Id;
+    return lastId;
 }
 
 void Questions::setThread(string thread)
@@ -98,42 +100,7 @@ string Questions::getRightAnswer()
 }
 
 void Questions::print_Question(){
+    cout<<getID()<<endl;
     cout<<getThread()<<endl;
-    cout<<getAnswer_A()<<setw(7)<<getAnswer_B()<<setw(7)<<getAnswer_C()<<setw(7)<<getAnswer_D()<<getRightAnswer()<<endl;
+    cout<<getAnswer_A()<<setw(7)<<getAnswer_B()<<setw(7)<<getAnswer_C()<<setw(7)<<getAnswer_D()<<endl;
 }
-// void Questions::setDate(Date ngaySinh)
-// {
-//     this->ngaySinh = ngaySinh;
-// }
-// Date Questions::getDate()
-// {
-//     return ngaySinh;
-// }
-
-// void Questions::print_Student()
-// {
-//     cout << setw(12) << getID() << setw(26) << getName() << setw(12) << getGender() << setw(13) << getDate() << setw(17) << getAdd() << endl;
-// }
-// bool Questions::check(string key){
-//     size_t found = ID.find(key);
-//     if(found != string::npos){
-//         return true;
-//     }
-//      found = name.find(key);
-//     if(found != string::npos){
-//         return true;
-//     }
-//     found = address.find(key);
-//     if(found != string::npos){
-//         return true;
-//     }
-//      found = gender.find(key);
-//     if(found != string::npos){
-//         return true;
-//     }
-//      found = ngaySinh.ToString().find(key);
-//     if(found != string::npos){
-//         return true;
-//     }
-//     return false;
-

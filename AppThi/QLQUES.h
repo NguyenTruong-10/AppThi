@@ -25,6 +25,7 @@ public:
     void test();
     void printMenu();
     char getInputOneCharacter();
+    void login();
 };
 
 #endif

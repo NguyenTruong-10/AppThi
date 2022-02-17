@@ -16,6 +16,7 @@ private:
 
 public:
   Question();
+  static int lastId;
   Question(int, string, string, string, string, string, string,string);
   void setID(int);
   int getID();

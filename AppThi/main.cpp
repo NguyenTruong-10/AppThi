@@ -8,8 +8,8 @@ using namespace std;
 int main()
 {
     QLyQUES quanLy;
-    quanLy.printMenu();
-
+    quanLy.login();
+	
     return 0;
 }
 
