@@ -12,12 +12,14 @@ class QLyQUES
 {
 private:
     Questions dsQues[300];
-    int number_studetns = 0;
+    int number_question = 0;
 
 public:
     QLyQUES();
     void saveFile();
     void loadFile();
+    void saveChoie();
+    void loadChoice();
     void addQuestion();
     void listQuestion();
     void deletes();

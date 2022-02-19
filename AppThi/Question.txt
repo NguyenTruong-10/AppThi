@@ -1,57 +1,36 @@
-8
-1
-Ket qua cua 2+1=?
-A:3
-B:4
-C:5
-D:7
-A
-2
-Ket qua cua 7+1=?
-A:3
-B:8
-C:9
-D:10
-B
-3
-Ket qua cua 2+3=?
-A:3
-B:4
-C:6
-D:5
-D
-4
-Ket qua cua 2+9=?
-A:10
-B:11
-C:90
-D:-9
-B
 5
-ket qua cua 9+9=?
-A:1
-B:11
-C:18
-D:10
+T1
+Phep cong 5+5=?
+A:11
+B:12
+C:10
+D:25
 C
-6
-ket qua cua 7-9=?
-A:90
-B:-2
-C:-3
-D:10
+T6
+Phep tinh 8+5=?
+A:12
+B:21
+C:13
+D:25
+C
+T9
+Phep cong 5+2=?
+A:11
+B:7
+C:9
+D:8
 B
-7
-Ket qua cua 1+67=?
-A:68
-B:10
-C;11
-D;10
+T2
+Phep tinh 5*5=?
+A:25
+B:12
+C:10
+D:25
 A
-8
-Ket qua cua 9*9=?
-A:81
-B:90
-C:81
-D:10
-C
+T3
+Phep tinh 5/5=?
+A:2
+B:1
+C:10
+D:25
+B

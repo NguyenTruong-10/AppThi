@@ -4,15 +4,11 @@
 #include "Question.h"
 
 using namespace std;
-int Questions::lastId = 0;
-Questions::Question()
-{
+Questions::Questions(){
 }
-Questions::Question(int Id, string thread, string answer_A, string answer_B, string answer_C, string answer_D, string choice_answer, string right_answer)
+Questions::Questions(string Id, string thread, string answer_A, string answer_B, string answer_C, string answer_D, string choice_answer, string right_answer)
 {
-    // this->Id = Id;
-    Id = lastId ;
-    lastId ++; 
+    this->Id = Id;
     this->thread = thread;
     this->answer_A = answer_A;
     this->answer_B = answer_B;
@@ -22,13 +18,13 @@ Questions::Question(int Id, string thread, string answer_A, string answer_B, str
     this->right_answer = right_answer;
 }
 
-void Questions::setID(int ID)
+ void Questions::setID(string Id)
+ {
+     this->Id = Id;
+ }
+string Questions::getID()
 {
-    this->Id = lastId;
-}
-int Questions::getID()
-{
-    return lastId;
+    return Id;
 }
 
 void Questions::setThread(string thread)
@@ -79,6 +75,7 @@ string Questions::getAnswer_D()
 {
     return answer_D;
 }
+
 // Lua chon dap an
 void Questions::setChoiceAnswer(string choice_answer)
 {
@@ -103,4 +100,7 @@ void Questions::print_Question(){
     cout<<getID()<<endl;
     cout<<getThread()<<endl;
     cout<<getAnswer_A()<<setw(7)<<getAnswer_B()<<setw(7)<<getAnswer_C()<<setw(7)<<getAnswer_D()<<endl;
+}
+void Questions::print_Choice(){
+    cout<<getChoiceAnswer()<<endl;
 }

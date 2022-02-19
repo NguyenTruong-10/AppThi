@@ -9,17 +9,16 @@ using namespace std;
 class Questions
 {
 private:
-  int Id;
+  string Id;
   string thread;
   string answer_A, answer_B, answer_C, answer_D, choice_answer,right_answer;
   // Date ngaySinh;
 
 public:
-  Question();
-  static int lastId;
-  Question(int, string, string, string, string, string, string,string);
-  void setID(int);
-  int getID();
+  Questions();
+  Questions(string, string, string, string, string,string,string,string);
+  void setID(string);
+  string getID();
   void setThread(string);
   string getThread();
 
@@ -42,6 +41,7 @@ public:
   string getRightAnswer();
   
   void print_Question();
+  void print_Choice();
 };
 
 #endif
