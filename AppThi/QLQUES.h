@@ -1,4 +1,4 @@
-#ifndef QLSV_H //if not define
+#ifndef QLSV_H // if not define
 #define QLSV_H
 
 #include <iostream>
@@ -28,8 +28,7 @@ public:
     void printMenu();
     char getInputOneCharacter();
     void login();
+    int randomNumber(int min, int max, int previousNumber);
 };
 
 #endif
-
-

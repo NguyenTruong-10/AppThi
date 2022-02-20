@@ -1,36 +1,50 @@
-5
+7
 T1
-Phep cong 5+5=?
+Tinh toan phep tinh 5+5=?
 A:11
 B:12
 C:10
 D:25
 C
-T6
+T2
 Phep tinh 8+5=?
 A:12
 B:21
 C:13
 D:25
 C
-T9
+T3
 Phep cong 5+2=?
 A:11
 B:7
 C:9
 D:8
 B
-T2
+T4
 Phep tinh 5*5=?
 A:25
 B:12
 C:10
-D:25
+D:5
 A
-T3
+T5
 Phep tinh 5/5=?
 A:2
 B:1
 C:10
 D:25
 B
+T6
+Phep tinh 9/5=?
+A:2
+B:10
+C:1
+D:2
+C
+T7
+Phep chia 11/1=?
+A:11
+B:111
+C:10
+D:1
+A

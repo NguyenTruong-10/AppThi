@@ -79,7 +79,7 @@ string Questions::getAnswer_D()
 // Lua chon dap an
 void Questions::setChoiceAnswer(string choice_answer)
 {
-    this->choice_answer = choice_answer;
+	this->choice_answer = choice_answer;
 }
 string Questions::getChoiceAnswer()
 {

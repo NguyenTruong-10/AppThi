@@ -2,6 +2,8 @@
 #include <iomanip>
 #include <string>
 #include <cstring>
+#include <cstdlib>
+#include <ctime>
 #include <fstream>
 #include <typeinfo>
 #include "QLQUES.h"
@@ -15,7 +17,6 @@ QLyQUES::QLyQUES()
 }
 void QLyQUES::saveChoie()
 {
-    cout<<"hahah\n";
     fstream f1("D:/BAI_TAP/AppThi/Choice_Answer.txt", ios::out);
     f1 << number_question << endl;
     for (int i = 0; i < number_question; i++)
@@ -27,13 +28,16 @@ void QLyQUES::saveChoie()
 void QLyQUES::loadChoice()
 {
     fstream f1("D:/BAI_TAP/AppThi/Choice_Answer.txt", ios::in);
-    for (int i = 0; i < number_question; i++)
+    for (int i = 0; i < number_question + 1; i++)
     {
         string choice_ans;
         f1 >> choice_ans;
-        dsQues[i].setChoiceAnswer(choice_ans);
+        if (i > 0)
+        {
+            dsQues[i - 1].setChoiceAnswer(choice_ans);
+        }
     }
-     f1.close();
+    f1.close();
 }
 void QLyQUES::saveFile()
 {
@@ -86,6 +90,7 @@ void QLyQUES::addQuestion()
     string question, right_ans, ans_A, ans_B, ans_C, ans_D;
     Questions ques;
     string idQues;
+    
     cout << "Ma cau hoi: ";
     cin.ignore();
     getline(cin, idQues);
@@ -303,60 +308,67 @@ char QLyQUES::getInputOneCharacter()
     }
     return choice;
 }
-
+int QLyQUES::randomNumber(int min, int max, int previousNumber)
+{
+    int result = (rand() % (max - min + 1)) + min;
+    while (result == previousNumber)
+    {
+        result = (rand() % (max - min + 1)) + min;
+    }
+    return result;
+}
 void QLyQUES::test()
 {
     string choice_ans;
-    Questions test_1;
+    int score = 0, do_test;
+    int index = -1;
+    cout << "1: Lam bai thi toan "<<endl;
+    cout << "Moi ban chon: ";
+    cin >> do_test;
+    if (do_test != 1)
+    {
+        cout << "Ban chon khong dung.";
+        exit(0);
+    }
     if (number_question > 0)
     {
+        cin.ignore();
+        int previousNumber = 0;
         for (int i = 0; i < 5; i++)
         {
             cout << " " << endl;
             cout << "Cau " << i + 1 << ": ";
+            int a = randomNumber(0, 5, previousNumber);
+             index = a;
+            previousNumber = a;
             dsQues[i].print_Question();
+            cout << "Dap an cau " << i + 1 << ": ";
+            getline(cin, choice_ans);
+            dsQues[i].setChoiceAnswer(choice_ans);
+            if (dsQues[i].getChoiceAnswer() == dsQues[i].getRightAnswer())
+            {
+                score = score + 2;
+            }
+            //            else
+            //            {
+            //                cout << "ban dang o day0";
+            //            }
         }
     }
     else
     {
-        cout << "\nDanh sach sinh vien trong.\n";
-    }
-
-    for (int i = 0; i < 5; i++)
-    {
-        cout << "Dap an cau " << i + 1 << ": ";
-        cin.ignore();
-        cin >> choice_ans;
-        test_1.setChoiceAnswer(choice_ans);
-        dsQues[number_question] = test_1;
+        cout << "\nDanh sach cau hoi trong.\n";
     }
     saveChoie();
 
     for (int i = 0; i < 5; i++)
     {
+        cout << " " << endl;
         cout << "Dap an ban chon " << i + 1 << ": ";
         dsQues[i].print_Choice();
-        loadChoice();
     }
+    cout << "Diem cua ban la: " << score << endl;
 }
-//    cout << "hhhssh";
-// loadFile();
-//    switch (choice)
-//    {
-//    case 'A'
-//
-//        break;
-//    case 'B'
-//        break;
-//    case 'C'
-//        break;
-//    case 'D'
-//        break;
-//    case ''
-//        break;
-//    default:
-//        break;
-//    }
 
 void QLyQUES::login()
 {
@@ -364,10 +376,13 @@ void QLyQUES::login()
     string pass;
     do
     {
-        cout << "Dang Nhap: ";
-        cin >> admin;
-        cout << "PassWord: ";
-        cin >> pass;
+
+//        cout << "Dang Nhap: ";
+//        cin >> admin;
+//        cout << "PassWord: ";
+//        cin >> pass;
+              admin = pass = "student";
+        int do_test;
         if (admin == "admin" && pass == "admin")
         {
             printMenu();
@@ -377,12 +392,20 @@ void QLyQUES::login()
             test();
             break;
         }
+        else if (admin == "admin" && pass == "student")
+        {
+            cout << "Mat khau khong dung"<<endl;
+        }
+         else if (admin == "student" && pass == "admin")
+        {
+            cout << "Mat khau khong dung"<<endl;
+        }
         else
         {
             cout << "Tai khoan khong ton tai" << endl;
             cout << "Moi nhap lai." << endl;
         }
-    } while (admin != "admin" && pass != "admin" || admin != "student" && pass != "student");
+    } while (admin != "admin" && pass != "admin" || admin != "student" && pass != "student" || admin == "admin" && pass == "student" || admin == "student" && pass == "admin");
 }
 
 void QLyQUES::printMenu()
@@ -395,47 +418,47 @@ LABEL1:
     cout << "\t\t\t|3. Xoa cau hoi       | |  4.Lam de thi       |\n";
     cout << "\t\t\t|5. Xem de            | |  6.Thoat            |\n";
     cout << "\t\t\t+---------------------------------------------+\n";
-    int chon;
+    char chon;
     char select;
     cout << "Moi chon chuc nang: ";
     cin >> chon;
-    //   chon = getInputOneCharacter();
-    while (chon <= 6 && chon > 0)
+    // chon = getInputOneCharacter();
+    while (chon <= '6' && chon > '0')
     {
         switch (chon)
         {
-        case 1:
+        case '1':
             cout << "\n\t\t|=======================================================================================|\n";
             cout << setw(64) << "THEM CAU HOI\n";
             addQuestion();
             listQuestion();
             cout << "\t\t|=======================================================================================|\n";
             break;
-        case 2:
+        case '2':
             cout << "\t\t|=======================================================================================|\n";
             cout << setw(64) << "SUA CAU HOI\n";
             editQuestion();
             cout << "\t\t|=======================================================================================|\n";
             break;
-        case 3:
+        case '3':
             cout << "\t\t|======================================================================================|\n";
             cout << setw(64) << "XOA CAU HOI\n";
             deletes();
             cout << "\n\t\t|=======================================================================================|\n";
             break;
-        case 4:
+        case '4':
             cout << "\t\t|=======================================================================================|\n";
             cout << setw(64) << "LAM DE\n";
             test();
             cout << "\t\t|=======================================================================================|\n";
             break;
-        case 5:
+        case '5':
             cout << "\t\t|=======================================================================================|\n";
             cout << setw(64) << "XOA THONG TIN SINH VIEN\n";
             listQuestion();
             cout << "\t\t========================================================================================|\n";
             break;
-        case 6:
+        case '6':
             exit(0);
             break;
         default:
